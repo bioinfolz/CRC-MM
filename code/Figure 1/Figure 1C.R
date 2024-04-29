@@ -1,7 +1,7 @@
 data=read.table("fecal.pathway.4lefse.res",head=F,sep="\t")
 sig=data[which(data$V4>2),]
 sig$path.name<-sapply(sig$V1,function(x){a=unlist(strsplit(x,split="_"));paste(a[1],a[2],sep="-")})
-raw=read.delim("path.raw.txt",head=T,row.names=1)
+raw=read.delim("path.anno.txt",head=T,row.names=1)
 id=sapply(rownames(raw),function(x){unlist(strsplit(x,split=":"))[1]})
 raw$id=id
 sig$V1<-rownames(raw[match(sig$path.name,raw$id),])
